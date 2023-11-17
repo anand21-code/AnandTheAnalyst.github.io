@@ -174,7 +174,7 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<section>
-							<form method="post" action="send_email.php" id="myForm">
+							<form method="post" action="" id="myForm">
 								<div class="fields">
 									<div class="field">
 										<label for="name">Name</label>
@@ -190,9 +190,27 @@
 									</div>
 								</div>
 								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
+									<li><input type="submit" value="Send Message" id="submit"/></li>
 								</ul>
 							</form>
+							<script>
+								document.getElementById('myForm').addEventListener('submit', function(e) {
+									e.preventDefault();
+									var formData = new FormData(this);
+					
+									fetch('https://script.google.com/macros/s/AKfycbzHQ_TkgDqbDgLDtg6x5u_YudX_xhOPc3KXXcKJS0rO2y8uvXE20hmG6fhfZlroxytuRA/exec', {
+										method: 'POST',
+										body: formData
+									})
+									.then(function(response) {
+										console.log('Thank you! Your response recorded successfully', response);
+										// Perform any other actions upon successful submission
+									})
+									.catch(function(error) {
+										console.error('Error:', error);
+									});
+								});
+							</script>
 						</section>
 						<section class="split contact">
 							<section class="alt">
@@ -218,23 +236,6 @@
 							</section>
 						</section>
 					</footer>
-
-					<script>
-						document.getElementById('myForm').addEventListener('submit', function(e) {
-							e.preventDefault();
-							var formData = new FormData(this);
-							fetch('Send Email By Portfolio', {
-								method: 'POST',
-								body: formData
-							}).then(response => {
-								console.log('Success:', response);
-								// Handle success (optional)
-							}).catch(error => {
-								console.error('Error:', error);
-								// Handle error (optional)
-							});
-						});
-					</script>
 
 				<!-- Copyright -->
 					<div id="copyright">
