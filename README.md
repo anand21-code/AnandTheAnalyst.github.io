@@ -1,1 +1,1 @@
-# AnandTheAnalyst.github.io
+# AnandTheAnalyst
